@@ -16,7 +16,7 @@ A deep learning-based price prediction model using various neural network archit
 1. Create a new conda environment:
 
 ```bash
-conda create -f environment.yaml
+conda env create -f environment.yaml
 ```
   Or using mannul env creation :
 
