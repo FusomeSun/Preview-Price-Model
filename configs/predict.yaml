@@ -1,0 +1,94 @@
+stock_info:
+  stock_names:
+  - AAPL
+  - MSFT
+  - AMZN
+  - NVDA
+  - GOOGL
+  - META
+  - TSLA
+  - UNH
+  - JNJ
+  - BAC
+  - JPM
+  - V
+  - PG
+  - XOM
+  - WMT
+  - MA
+  - HD
+  - CVX
+  - LLY
+  - ABBV
+
+  start_date: '2014-01-01'
+  end_date: '2024-9-22'
+  feature: Close
+  features: 
+  - Close
+  - Signal
+  - MACD_signal
+  - MACD_diff
+  - RSI
+  - RSI_signal
+  - Upper_BB
+  - Lower_BB
+  training_features:
+  - Close
+  - MACD
+  - Signal
+  - MACD_signal
+  - MACD_diff
+  - TrunOver
+  - Amplitude
+  - Beta
+  - Vix
+  - OBV
+  - VIX
+  - RSI
+  - RSI_signal
+  - Upper_BB
+  - Lower_BB
+  - SMA_50
+  #- SMA_200
+  - BTC
+  - ETH
+
+optimze:
+  num_trail: 100
+pretrain:
+  epochs: 5000
+  lr: 0.001
+  batch_size: 1024
+  model: ImprovedLSTM
+  trained_save_path: pretrained_model_LSTM.pth
+  loss_alpha: 0.2
+fine_tune:
+  epochs: 600
+  lr: 0.001
+  batch_size : 64
+  shuffle : False
+  model: TransformerModel
+  pre_train: False
+  full_feature: True
+  auto_feature: False
+  trained_model_path: pretrained_model_features.pth
+  prediction_file: predictions_TransformerModel
+  loss_fun: CustomLossM
+  loss_alpha: 0.2
+
+hyperparameters:
+  out_length: 10
+  seq_length: 80
+
+model_configs:
+  TransformerModel:
+    d_model: 64
+    nhead: 8 
+    num_layers: 3
+    dropout: 0.2
+  TemporalFusionTransformer:
+    d_model: 64
+    num_heads: 8 
+    num_layers: 3
+    dropout: 0.2

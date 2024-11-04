@@ -1,0 +1,13 @@
+pandas
+numpy
+torch
+matplotlib
+yfinance
+scikit-learn
+optuna
+hydra-core
+selenium
+webdriver-manager
+transformers
+tf-keras
+seaborn

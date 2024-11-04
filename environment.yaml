@@ -1,0 +1,25 @@
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.9
+  - pandas
+  - numpy
+  - pytorch
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - scipy
+  - statsmodels
+  - pip
+  - pip:
+    - yfinance
+    - optuna
+    - hydra-core
+    - selenium
+    - webdriver-manager
+    - transformers
+    - tf-keras
+    - plotly
+    - newsapi-python

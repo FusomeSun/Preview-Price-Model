@@ -1,0 +1,112 @@
+stock_info:
+  stock_names:
+  - AMD
+  - AVGO
+  - INTC
+  - KLAC
+  - LRCX
+  - MU
+  - NVDA
+  - QCOM
+  - SWKS
+  - TXN
+  - TER
+  - AMAT
+  - CDNS
+  - MCHP
+  - ADI
+  - NXPI
+  - TER
+  - ASML
+  - ADP
+  start_date: '2014-01-01'
+  end_date: '2024-07-25'
+  feature: Close
+  features:
+  - Close
+  - Signal
+  - MACD_signal
+  - MACD_diff
+  - RSI
+  - RSI_signal
+  - Upper_BB
+  - Lower_BB
+  training_features:
+  - Close
+  - MACD
+  - Signal
+  - MACD_signal
+  - MACD_diff
+  - TrunOver
+  - Amplitude
+  - Beta
+  - Vix
+  - OBV
+  - VIX
+  - RSI
+  - RSI_signal
+  - Upper_BB
+  - Lower_BB
+  - SMA_50
+  - SMA_200
+  - BTC
+  - ETH
+optimze:
+  num_trail: 100
+pretrain:
+  epochs: 5000
+  lr: 0.001
+  batch_size: 1024
+  model: ImprovedLSTM
+  trained_save_path: pretrained_model_LSTM.pth
+  loss_alpha: 0.2
+fine_tune:
+  epochs: 600
+  lr: 0.001
+  batch_size: 256
+  shuffle: false
+  model: TransformerModel
+  pre_train: false
+  full_feature: false
+  auto_feature: true
+  trained_model_path: pretrained_model_features.pth
+  prediction_file: predictions_TransformerModel
+  loss_fun: CustomLoss
+  loss_alpha: 0.2
+experiment:
+  Uid: true
+  id: semi-conductor
+hyperparameters:
+  out_length: 10
+  seq_length: 80
+model_configs:
+  TransformerModel:
+    d_model: 64
+    nhead: 8
+    num_layers: 3
+    dropout: 0.2
+  ImprovedLSTM:
+    hidden_layer_size: 100
+    num_layers: 2
+    dropout: 0.2
+  AttentionLSTM:
+    hidden_layer_size: 200
+    num_layers: 2
+    dropout: 0.2
+  CNNLSTM:
+    hidden_layer_size: 200
+    num_layers: 2
+    kernel_size: 3
+    dropout: 0.2
+  TCN:
+    num_channels:
+    - 64
+    - 128
+    - 256
+    kernel_size: 3
+    dropout: 0.2
+  TemporalFusionTransformer:
+    d_model: 64
+    num_heads: 8
+    num_layers: 3
+    dropout: 0.2
