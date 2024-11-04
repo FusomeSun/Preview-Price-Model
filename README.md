@@ -1,6 +1,6 @@
-# Price Prediction Model
+# Preview Price Model
 
-A deep learning-based price prediction model using various neural network architectures including LSTM, Transformer, CNN-LSTM, and Temporal Fusion Transformer.
+A deep learning-based price prediction model using various neural network architectures including LSTM, Transformer, and Temporal Fusion Transformer.
 
 ## Features
 
@@ -14,12 +14,24 @@ A deep learning-based price prediction model using various neural network archit
 ## Environment Setup
 
 1. Create a new conda environment:
+
+```bash
+conda create -f environment.yaml
+```
+  Or using mannul env creation :
+
 ```bash
 conda create -n price_pred python=3.8
 conda activate price_pred
 ```
 
 2. Install required packages:
+
+```bash
+pip install -r requirment.txt 
+```
+  Or using mannul install :
+
 ```bash
 pip install torch
 pip install pandas
@@ -46,7 +58,9 @@ pip install webdriver-manager
 │   ├── CNN.py           # CNN model implementations
 │   └── utils/           # Model utilities
 ├── results/             # Saved results and metrics
-└── fine_tune.py         # Main training script
+├──training/
+└──  ├──  pre_train.py
+     └── fine_tune.py         # Main training script
 ```
 
 ## Usage
@@ -87,11 +101,7 @@ python fine_tune_multi_stocks.py
 
 ### Model Selection
 Choose from available models:
-- `ImprovedLSTM`
 - `TransformerModel`
-- `AttentionLSTM`
-- `CNNLSTM`
-- `TCN`
 - `TemporalFusionTransformer`
 
 ```yaml
