@@ -21,7 +21,7 @@ conda env create -f environment.yaml
   Or using mannul env creation :
 
 ```bash
-conda create -n price_pred python=3.8
+conda create -n price_pred python=3.9
 conda activate price_pred
 ```
 
