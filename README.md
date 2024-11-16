@@ -28,7 +28,7 @@ conda activate price_pred
 2. Install required packages:
 
 ```bash
-pip install -r requirment.txt 
+pip install -r requirement.txt 
 ```
   Or using mannul install :
 
