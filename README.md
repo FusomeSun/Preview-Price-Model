@@ -94,7 +94,7 @@ stock_info:
 
 2. Run multi-stock training:
 ```bash
-python fine_tune_multi_stocks.py
+python training/fine_tune.py
 ```
 
 ## Configuration Options
