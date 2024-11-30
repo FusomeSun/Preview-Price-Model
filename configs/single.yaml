@@ -1,29 +1,29 @@
 stock_info:
   stock_names:
-  - AMD
-  - AVGO
-  - INTC
-  - KLAC
-  - LRCX
-  - MU
-  - NVDA
-  - QCOM
-  - SWKS
-  - TXN
-  - TER
-  - AMAT
-  - CDNS
-  - MCHP
-  - ADI
-  - NXPI
-  - TER
-  - ASML
-  - ADP
-
+  - UNP
+  - CSX
+  - NSC
+  - FDX
+  - UPS
+  - LUV
+  - DAL
+  - AAL
+  - UAL
+  - CAT
+  - DE
+  - ITW
+  - HON
+  - MMM
+  - GE
+  - EMR
+  - ETN
+  - ROK
+  - CMI
+  - DOW
   start_date: '2014-01-01'
   end_date: '2024-07-25'
   feature: Close
-  features: 
+  features:
   - Close
   - Signal
   - MACD_signal
@@ -52,7 +52,6 @@ stock_info:
   - SMA_200
   - BTC
   - ETH
-
 optimze:
   num_trail: 100
 pretrain:
@@ -63,34 +62,53 @@ pretrain:
   trained_save_path: pretrained_model_LSTM.pth
   loss_alpha: 0.2
 fine_tune:
-  epochs: 600
-  lr: 0.001
-  batch_size : 256
-  shuffle : False
-  model:  TransformerModel
-  pre_train: False
-  full_feature: False
-  auto_feature: True
+  epochs: 2000
+  lr: 0.0001
+  batch_size: 256
+  shuffle: true
+  model: ImprovedLSTM
+  pre_train: false
+  full_feature: true
+  auto_feature: false
   trained_model_path: pretrained_model_features.pth
-  prediction_file: predictions_TransformerModel
-  loss_fun: CustomLoss
+  prediction_file: predictions_v2
+  loss_fun: CustomLossM
   loss_alpha: 0.2
-
 experiment:
-  Uid: True
-  id: semi-conductor
+  Uid: true
+  id: Random_5
+  save_id: r_1
 hyperparameters:
   out_length: 10
-  seq_length: 80
-
+  seq_length: 200
 model_configs:
   TransformerModel:
     d_model: 64
-    nhead: 8 
-    num_layers: 3
+    nhead: 8
+    num_layers: 4
+    dropout: 0.4
+  ImprovedLSTM:
+    hidden_layer_size: 100
+    num_layers: 2
+    dropout: 0.5
+  AttentionLSTM:
+    hidden_layer_size: 200
+    num_layers: 2
+    dropout: 0.2
+  CNNLSTM:
+    hidden_layer_size: 200
+    num_layers: 2
+    kernel_size: 3
+    dropout: 0.2
+  TCN:
+    num_channels:
+    - 64
+    - 128
+    - 256
+    kernel_size: 3
     dropout: 0.2
   TemporalFusionTransformer:
     d_model: 64
-    num_heads: 8 
+    num_heads: 8
     num_layers: 3
     dropout: 0.2
